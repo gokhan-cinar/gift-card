@@ -25,11 +25,15 @@ const sortEvents = () => {
 };
 
 const showEvents = (event) => {
-    if (event.type === API_EVENT_TYPE.ANIMATED_GIFT) {
-        addMessage(event);
-        animateGift(event);
-    } else if (event.type === API_EVENT_TYPE.GIFT) {
-        addMessage(event);
+    switch (event.type) {
+        case API_EVENT_TYPE.ANIMATED_GIFT:
+            addMessage(event);
+            animateGift(event);
+            break;
+        case API_EVENT_TYPE.MESSAGE:
+        case API_EVENT_TYPE.GIFT:
+            addMessage(event);
+            break;
     }
 };
 
